@@ -1,0 +1,127 @@
+# Editors{{{
+
+## Vim template
+Session.vim
+*.vim
+
+### Swap
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+
+## VisualStudioCode template
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+## Sublime-github package stores a github token in this file
+# https://packagecontrol.io/packages/sublime-github
+GitHub.sublime-settings
+# }}}
+
+# Language spesific {{{
+
+# Python {{{
+
+# Virtual env
+.venv/
+
+# Sqlite db
+*.sqlite3
+
+# Celery stuff
+celerybeat-schedule
+celerybeat.pid
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Sphinx documentation
+docs/_build/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+# }}}
+# }}}
+
+# OS X {{{
+
+.history
+.DS_Store
+*.DS_Store
+.AppleDouble
+.LSOverride
+# }}}
+
+# Temporary {{{
+
+tmp/
+.tmp/
+.netrwhist
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Auto-generated tag files
+tags
+tags.*
+
+# Dump file
+*.stackdump
+
+# logs
+*.log
+logs/
+
+# Archive
+archive/
+.archive/
+# }}}
