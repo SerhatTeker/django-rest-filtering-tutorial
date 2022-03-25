@@ -21,9 +21,9 @@ management.call_command("migrate", no_input=True)
 # Seed
 
 # users
-user_1 = User.objects.create(username="User1", name="UserName1")
-user_2 = User.objects.create(username="User2", name="UserName2")
-user_3 = User.objects.create(username="User3", name="UserName3")
+user_1 = User.objects.create_user(username="User1", email="user1@api.com", name="UserName1", password="1234")
+user_2 = User.objects.create_user(username="User2", email="user2@api.com", name="UserName2", password="1234")
+user_3 = User.objects.create_user(username="User3", email="user3@api.com", name="UserName3", password="1234")
 
 # authors
 author_1 = Author.objects.create(user=user_1, first_name="Name1", last_name="Surname1")

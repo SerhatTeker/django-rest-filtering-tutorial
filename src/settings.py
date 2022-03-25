@@ -148,6 +148,16 @@ LOGGING = {
     },
 }
 
+# https://www.django-rest-framework.org/api-guide/settings/
 REST_FRAMEWORK = {
-    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"]
+    "DEFAULT_FILTER_BACKENDS": ["django_filters.rest_framework.DjangoFilterBackend"],
 }
+
+# # Comment out to set them
+# REST_FRAMEWORK["DEFAULT_AUTHENTICATION_CLASSES"] = [
+#     "rest_framework.authentication.BasicAuthentication",
+#     "rest_framework.authentication.SessionAuthentication",
+# ]
+# REST_FRAMEWORK["DEFAULT_PERMISSION_CLASSES"] = [
+#     "rest_framework.permissions.IsAuthenticated",
+# ]
