@@ -26,9 +26,9 @@ user_2 = User.objects.create(username="User2", name="UserName2")
 user_3 = User.objects.create(username="User3", name="UserName3")
 
 # authors
-author_1 = Author.objects.create(first_name="Name1", last_name="Surname1")
+author_1 = Author.objects.create(user=user_1, first_name="Name1", last_name="Surname1")
 author_2 = Author.objects.create(first_name="Name2", last_name="Surname2")
-author_3 = Author.objects.create(user=user_3, first_name="Name2", last_name="Surname2")
+author_3 = Author.objects.create(user=user_3, first_name="Name3", last_name="Surname3")
 
 # regions
 region_de = Region.objects.create(code="DE", name="Germany")
