@@ -4,7 +4,9 @@ Source code for [Django REST Filtering Tutorial] series on [tech.serhatteker.com
 
 A simple application written in Python Django REST to demonstrate **filtering**.
 
-* [part I]
+* [Tutorial part I]
+* [Tutorial part II]
+
 
 ## Setup Repo
 
@@ -23,7 +25,7 @@ $ python manage.py runserver 8000
 # ./manage.py runserver 8000
 ```
 
-Also another option is that you can use [gnu make] and simply run:
+Also another option is that you can use [gnu make], simply run:
 
 ```bash
 $ make start
@@ -58,11 +60,54 @@ $ curl http://localhost:8000/authors/
 ```
 
 
+## Authentication and Permission
+
+Authentication and permission disabled by default. In order to enable them
+comment out related lines at the end of the `settings.py` file.
+
+You can make a successful request by including the username and password of
+one of the users created in `populate_db.py`:
+
+```bash
+$ http -a User1:1234 :8000/authors
+
+[
+    {
+        "first_name": "Name1",
+        "full_name": "Name1 Surname1",
+        "id": 1,
+        "last_name": "Surname1",
+        "user": 1
+    },
+    {
+        "first_name": "Name2",
+        "full_name": "Name2 Surname2",
+        "id": 2,
+        "last_name": "Surname2",
+        "user": null
+    },
+    {
+        "first_name": "Name3",
+        "full_name": "Name3 Surname3",
+        "id": 3,
+        "last_name": "Surname3",
+        "user": 3
+    }
+]
+```
+
+All 3 users and their passwords:
+- `User1:1234`
+- `User2:1234`
+- `User3:1234`
+
+
 
 
 [Django REST Filtering Tutorial]: https://tech.serhatteker.com/post/2022-03/django-rest-filtering-tutorial-part-1/
-[part I]: https://tech.serhatteker.com/post/2022-03/django-rest-filtering-tutorial-part-1/
 [tech.serhatteker.com]: https://tech.serhatteker.com/
 [httpie]: https://httpie.io/
 [curl]: https://curl.se/
 [gnu make]: https://www.gnu.org/software/make/
+[Tutorial part I]: https://tech.serhatteker.com/post/2022-03/django-rest-filtering-tutorial-part-1/
+[Tutorial part II]: https://tech.serhatteker.com/post/2022-03/django-rest-filtering-tutorial-part-2/
