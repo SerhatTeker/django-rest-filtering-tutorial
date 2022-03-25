@@ -13,7 +13,7 @@ class AuthorFilter(filters.FilterSet):
 
     class Meta:
         model = Author
-        fields = ("first_name", "last_name")
+        fields = ("id", "user", "first_name", "last_name")
 
     @staticmethod
     def search_in_names(queryset, name, value):
