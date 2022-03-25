@@ -67,9 +67,11 @@ clean: migrations-delete ## Delete db and venv
 
 # DB
 # ----------------------------------------------------------------------------
+.PHONY: reset-db
 reset-db:  ## Delete and recreate db&migrations
 	$(MANAGE) reset_db --noinput # same as: rm $(DATABASE)
-	$(MAKE) -f $(ROOT)/Makefile reset-migrations
+	$(PYTHON) populate_db.py
+	# $(MAKE) -f $(ROOT)/Makefile reset-migrations
 
 .PHONY: reset-migrations
 reset-migrations:  ## Delete and reset db&migrations
