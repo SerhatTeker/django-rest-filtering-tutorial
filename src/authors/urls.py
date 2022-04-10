@@ -1,9 +1,24 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
+from django.urls import path
 from src.authors import views
 
-# Create a router and register our viewsets with it
-router = DefaultRouter()
-router.register(r"authors", views.AuthorViewSet)
 
-urlpatterns = router.urls
+urlpatterns = [
+    path(
+        "authors/", views.AuthorViewSet.as_view(actions={"get": "list"}), name="authors"
+    ),
+    # path(
+    #     "authors/<int:user>/",
+    #     views.AuthorViewSet.as_view(actions={"get": "list"}),
+    #     name="authors-by-users",
+    # ),
+    path(
+        "authors/<str:name>/",
+        views.AuthorViewSet.as_view(actions={"get": "list"}),
+        name="authors-by-first_name",
+    ),
+    path(
+        "authors/<str:last_name>/",
+        views.AuthorViewSet.as_view(actions={"get": "list"}),
+        name="authors-by-last_name",
+    ),
+]
