@@ -6,7 +6,9 @@ A simple application written in Python Django REST to demonstrate **filtering**.
 
 * [Tutorial part I]
 * [Tutorial part II]
+* [Tutorial part III]
 
+You can find related branches to the tutorial parts.
 
 ## Setup Repo
 
@@ -111,3 +113,4 @@ All 3 users and their passwords:
 [gnu make]: https://www.gnu.org/software/make/
 [Tutorial part I]: https://tech.serhatteker.com/post/2022-03/django-rest-filtering-tutorial-part-1/
 [Tutorial part II]: https://tech.serhatteker.com/post/2022-03/django-rest-filtering-tutorial-part-2/
+[Tutorial part II]: https://tech.serhatteker.com/post/2022-03/django-rest-filtering-tutorial-part-3/
