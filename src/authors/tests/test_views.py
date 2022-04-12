@@ -1,13 +1,13 @@
 import json
 
 from django.core.exceptions import ValidationError
-from django.test import TestCase
 from django.urls import reverse
+from rest_framework.test import APITestCase
 
 from src.authors.models import Author
 
 
-class TestAuthorListViewCase(TestCase):
+class TestAuthorListViewCase(APITestCase):
     def setUp(self):
         self.url = reverse("author-list")
         self.author_1 = Author.objects.create(first_name="Name1", last_name="Surname1")
@@ -22,12 +22,14 @@ class TestAuthorListViewCase(TestCase):
             [
                 {
                     "id": self.author_1.id,
+                    "user": None,
                     "first_name": "Name1",
                     "last_name": "Surname1",
                     "full_name": "Name1 Surname1",
                 },
                 {
                     "id": self.author_2.id,
+                    "user": None,
                     "first_name": "Name2",
                     "last_name": "Surname2",
                     "full_name": "Name2 Surname2",
@@ -51,16 +53,16 @@ class TestAuthorListViewCase(TestCase):
         self.assertDictEqual(
             {
                 "id": author.id,
+                "user": None,
                 "first_name": "Name3",
                 "last_name": "Surname3",
                 "full_name": "Name3 Surname3",
-
             },
             response.json(),
         )
 
 
-class TestAuthorViewCase(TestCase):
+class TestAuthorViewCase(APITestCase):
     def setUp(self):
         self.author = Author.objects.create(first_name="Name1", last_name="Surname1")
         self.url = reverse("author-detail", kwargs={"pk": self.author.id})
@@ -73,6 +75,7 @@ class TestAuthorViewCase(TestCase):
             response.json(),
             {
                 "id": self.author.id,
+                "user": None,
                 "first_name": "Name1",
                 "last_name": "Surname1",
                 "full_name": "Name1 Surname1",
@@ -97,6 +100,7 @@ class TestAuthorViewCase(TestCase):
         self.assertDictEqual(
             {
                 "id": author.id,
+                "user": None,
                 "first_name": "Name3",
                 "last_name": "Surname3",
                 "full_name": "Name3 Surname3",
