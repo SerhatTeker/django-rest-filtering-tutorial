@@ -7,33 +7,27 @@ from src.authors.models import Author
 from src.authors.serializers import AuthorSerializer
 
 
-class AuthorFilter(filters.FilterSet):
-    # full_name = filters.CharFilter(field_name="full_name", label="full_name", lookup_expr="contains")
-    full_name = filters.CharFilter(label="full_name", method="search_in_names")
-
-    class Meta:
-        model = Author
-        fields = ("id", "user", "first_name", "last_name")
-
-    @staticmethod
-    def search_in_names(queryset, name, value):
-        for term in value.split():
-            qs = queryset.filter(
-                Q(first_name__icontains=term) | Q(last_name__icontains=term)
-            )
-
-        return qs
-
-
 class AuthorViewSet(viewsets.ModelViewSet):
     serializer_class = AuthorSerializer
     queryset = Author.objects.all()
-    filter_backends = (
-        filters.DjangoFilterBackend,
-        OrderingFilter,
-        SearchFilter,
-    )
-    filterset_class = AuthorFilter
-    search_fields = ("full_name", "first_name", "last_name")
-    ordering_fields = ("first_name", "last_name")
-    ordering = "last_name"
+
+    # def get_queryset(self):
+    #     user = self.request.query_params.get("user", None)
+    #     if user is not None:
+    #         return Author.objects.filter(user=user)
+
+    #     return super().get_queryset()
+
+    def get_queryset(self):
+        params = ("user", "user_id")
+        if not all([param in self.request.query_params for param in params]):
+            return Author.objects.none()
+
+        user = self.request.query_params.get("user", None)
+        user_id = self.request.query_params.get("user_id", None)
+        user = user or user_id
+
+        if user is not None:
+            return Author.objects.filter(user=user)
+
+        return super().get_queryset()
