@@ -9,23 +9,23 @@ class AuthorViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = AuthorSerializer
     queryset = Author.objects.all()
 
-    # User ID
+    # # User ID
     # def get_queryset(self):
-    #     if user := self.kwargs.get("user"):
+    #     if (user := self.kwargs.get("user", None)) is not None:
     #         return Author.objects.filter(user=user)
 
     #     return super().get_queryset()
 
-    # User name
+    # # User name
     # def get_queryset(self):
-    #     if name := self.kwargs.get("name"):
+    #     if (name := self.kwargs.get("name", None)) is not None:
     #         return Author.objects.filter(user__name__icontains=name)
 
     #     return super().get_queryset()
 
     # Any Name
     def get_queryset(self):
-        if name := self.kwargs.get("name"):
+        if (name := self.kwargs.get("name", None)) is not None:
             return Author.objects.filter(
                 Q(first_name__icontains=name)
                 | Q(last_name__icontains=name)

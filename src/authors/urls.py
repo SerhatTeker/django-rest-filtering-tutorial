@@ -11,14 +11,14 @@ urlpatterns = [
     #     views.AuthorViewSet.as_view(actions={"get": "list"}),
     #     name="authors-by-users",
     # ),
+    # path(
+    #     "authors/<str:name>/",
+    #     views.AuthorViewSet.as_view(actions={"get": "list"}),
+    #     name="authors-by-name",
+    # ),
     path(
         "authors/<str:name>/",
         views.AuthorViewSet.as_view(actions={"get": "list"}),
-        name="authors-by-first_name",
-    ),
-    path(
-        "authors/<str:last_name>/",
-        views.AuthorViewSet.as_view(actions={"get": "list"}),
-        name="authors-by-last_name",
+        name="authors-by-name",
     ),
 ]
