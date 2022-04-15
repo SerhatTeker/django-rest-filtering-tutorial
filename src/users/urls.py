@@ -4,6 +4,6 @@ from src.users import views
 
 # Create a router and register our viewsets with it
 router = DefaultRouter()
-router.register(r"users", views.UserViewSet)
+router.register(r"users", views.UserModelViewSet)
 
 urlpatterns = router.urls
